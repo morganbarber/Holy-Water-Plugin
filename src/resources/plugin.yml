@@ -1,0 +1,6 @@
+name: Holy_Water
+version: '1.2'
+main: org.holywater.holy_water.Holy_Water
+api-version: '1.20'
+authors: [Morgan Barber and Jaxter Graham]
+description: Holy water for demolishing curses on armors and items
