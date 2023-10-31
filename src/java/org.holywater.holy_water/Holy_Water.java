@@ -1,4 +1,4 @@
-package org.holywater.holy_water;
+package org.holywater.holywater;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -16,7 +16,7 @@ import org.bukkit.event.inventory.PrepareAnvilEvent;
 import org.bukkit.enchantments.Enchantment;
 
 
-public final class Holy_Water extends JavaPlugin {
+public final class Holy_water extends JavaPlugin {
 
     @Override
     public void onEnable() {
@@ -58,7 +58,7 @@ public final class Holy_Water extends JavaPlugin {
             Bukkit.broadcastMessage("BOW AND TREMBLE.Joebilly1 HAS JOINED THE SERVER");
         }
 
-        if (player.getName().equals("Radeon6900x")) {
+        if (player.getName() == "Radeon6900x") {
             Bukkit.broadcastMessage("HIS IMPERIAL MAJESTY HAS JOINED THE SERVER");
         }
 
