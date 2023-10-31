@@ -20,7 +20,7 @@ public class AnvilListener implements Listener {
 
         if (item1 != null && item2 != null) {
             // generate key
-            NamespacedKey key = new NamespacedKey(String.valueOf(Holy_Water.class), "isHolyWater");
+            NamespacedKey key = new NamespacedKey("holy-water", "isholywater");
             if (item2.getItemMeta().getPersistentDataContainer().has(key, PersistentDataType.BYTE)) {
                 // This is holy water!!!
                 ItemStack new_item = item1.clone();
