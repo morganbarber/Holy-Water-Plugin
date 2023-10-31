@@ -1,9 +1,12 @@
-package org.holywater.holy_water;
+package org.holywater.holywater;
 
+import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.inventory.PrepareAnvilEvent;
 import org.bukkit.inventory.AnvilInventory;
 import org.bukkit.inventory.ItemStack;
@@ -20,7 +23,7 @@ public class AnvilListener implements Listener {
 
         if (item1 != null && item2 != null) {
             // generate key
-            NamespacedKey key = new NamespacedKey("holy-water", "isholywater");
+            NamespacedKey key = new NamespacedKey(String.valueOf(Holy_water.class), "isholywater");
             if (item2.getItemMeta().getPersistentDataContainer().has(key, PersistentDataType.BYTE)) {
                 // This is holy water!!!
                 ItemStack new_item = item1.clone();
@@ -39,11 +42,34 @@ public class AnvilListener implements Listener {
 
                 new_item.setItemMeta(new_meta);
                 event.setResult(new_item);
-
-                item2.setAmount(item2.getAmount()-1);
-                inv.setItem(1, item2);
             }
 
+        }
+    }
+
+    @EventHandler
+    public void onClick(InventoryClickEvent event) {
+        if(event.getInventory() instanceof AnvilInventory && event.getSlotType() == InventoryType.SlotType.RESULT){
+            AnvilInventory inv = (AnvilInventory) event.getInventory();
+            ItemStack item1 = inv.getItem(0);
+            ItemStack item2 = inv.getItem(1);
+
+            if (item1 != null && item2 != null) {
+                // generate key
+                NamespacedKey key = new NamespacedKey("holy-water", "isholywater");
+                if (item2.getItemMeta().getPersistentDataContainer().has(key, PersistentDataType.BYTE) && item2.getAmount() > 1) {
+                    event.setCancelled(true);
+                    item1.setAmount(item1.getAmount()-1);
+                    item2.setAmount(item2.getAmount()-1);
+                    inv.setItem(0, item1);
+                    inv.setItem(1, item2);
+                } else if(item2.getItemMeta().getPersistentDataContainer().has(key, PersistentDataType.BYTE) && item2.getAmount() == 1) {
+                    event.setCancelled(true);
+                    item1.setAmount(item1.getAmount()-1);
+                    inv.setItem(0, item1);
+                    inv.setItem(1, new ItemStack(Material.AIR));
+                }
+            }
         }
     }
 }
