@@ -24,7 +24,7 @@ public final class Holy_Water extends JavaPlugin {
         System.out.println("holy water plugin is starting");
 
         // generate key
-        NamespacedKey key = new NamespacedKey(this, "holy_water");
+        NamespacedKey key = new NamespacedKey("holy-water", "holy_water");
 
         // initialize recipe
         ShapedRecipe recipe = new ShapedRecipe(key, new HolyWater());
