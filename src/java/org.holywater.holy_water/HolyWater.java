@@ -1,4 +1,4 @@
-package org.holywater.holy_water;
+package org.holywater.holywater;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -18,7 +18,7 @@ public class HolyWater extends ItemStack {
         ItemMeta meta = getItemMeta();
 
         // secure measurements to for item checking
-        NamespacedKey key = new NamespacedKey("holy-water", "isHolyWater");
+        NamespacedKey key = new NamespacedKey("holy-water", "isholywater");
         meta.getPersistentDataContainer().set(key, PersistentDataType.BYTE, (byte) 1);
 
         // title
