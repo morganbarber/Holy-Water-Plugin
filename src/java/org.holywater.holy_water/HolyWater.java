@@ -18,7 +18,7 @@ public class HolyWater extends ItemStack {
         ItemMeta meta = getItemMeta();
 
         // secure measurements to for item checking
-        NamespacedKey key = new NamespacedKey(String.valueOf(Holy_Water.class), "isHolyWater");
+        NamespacedKey key = new NamespacedKey("holy-water", "isHolyWater");
         meta.getPersistentDataContainer().set(key, PersistentDataType.BYTE, (byte) 1);
 
         // title
